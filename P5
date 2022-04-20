@@ -1,0 +1,27 @@
+#include <iostream>
+#include<fstream>
+#include<string.h>
+
+using namespace std;
+int main() {
+  fstream fin;
+  fin.open("textfile.txt");
+  char fileContent;
+  int charCount = 0, spaceCount = 0, lineCount = 0;
+  while (fin) {
+    fin.get(fileContent);
+    if (fileContent == '\n') {
+      lineCount++;
+    } else if (fileContent == ' ') {
+      spaceCount++;
+    } else if (fileContent != ' ') {
+      charCount++;
+    }
+  }
+  charCount--;
+  lineCount++;
+  cout << "Number of characters : " << charCount << "\n";
+  cout << "Number of lines : " << lineCount << "\n";
+  cout << "Number of spaces : " << spaceCount << "\n";
+  return 0;
+}
